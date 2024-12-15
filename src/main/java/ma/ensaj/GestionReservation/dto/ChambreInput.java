@@ -1,34 +1,15 @@
 package ma.ensaj.GestionReservation.dto;
 
-import ma.ensaj.GestionReservation.entities.TypeChambre;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ChambreInput {
-    private Double prix;
+    private Long id;
+    private String type;
+    private Float prix;
     private Boolean disponible;
-    private TypeChambre type;
-
-    // Getters et setters
-    public Double getPrix() {
-        return prix;
-    }
-
-    public void setPrix(Double prix) {
-        this.prix = prix;
-    }
-
-    public Boolean getDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(Boolean disponible) {
-        this.disponible = disponible;
-    }
-
-    public TypeChambre getType() {
-        return type;
-    }
-
-    public void setType(TypeChambre type) {
-        this.type = type;
-    }
 }

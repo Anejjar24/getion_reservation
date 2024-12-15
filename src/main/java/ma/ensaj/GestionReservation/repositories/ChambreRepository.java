@@ -11,4 +11,6 @@ import java.util.List;
 public interface ChambreRepository extends JpaRepository<Chambre, Long> {
     List<Chambre> findByDisponibleTrue();
     List<Chambre> findByType(TypeChambre type);
+    List<Chambre> findByDisponibleAndType(Boolean disponible, TypeChambre type);
+
 }

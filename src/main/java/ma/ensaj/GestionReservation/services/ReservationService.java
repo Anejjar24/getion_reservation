@@ -68,7 +68,7 @@ public class ReservationService {
         return reservationRepository.findByClient(client);
     }
 
-    public List<Reservation> getReservationsByDateRange(LocalDate startDate, LocalDate endDate) {
+    public List<Reservation> getReservationsByDateRange(String startDate, String endDate) {
         return reservationRepository.findByDateDebutBetween(startDate, endDate);
     }
 

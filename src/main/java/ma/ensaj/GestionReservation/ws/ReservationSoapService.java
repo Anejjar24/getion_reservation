@@ -52,21 +52,21 @@ public class ReservationSoapService {
         }
 
         // Convertir les chaînes de caractères en objets Date
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateDebut;
-        Date dateFin;
-        try {
-            dateDebut = dateFormat.parse(dateDebutStr);
-            dateFin = dateFormat.parse(dateFinStr);
-        } catch (ParseException e) {
-            throw new RuntimeException("Format de date invalide, veuillez utiliser 'yyyy-MM-dd'", e);
-        }
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        String dateDebut;
+//        String dateFin;
+//        try {
+//            dateDebut = dateFormat.parse(dateDebutStr);
+//            dateFin = dateFormat.parse(dateFinStr);
+//        } catch (ParseException e) {
+//            throw new RuntimeException("Format de date invalide, veuillez utiliser 'yyyy-MM-dd'", e);
+//        }
 
         Reservation reservation = new Reservation();
         reservation.setClient(client);
         reservation.setChambre(chambre);
-        reservation.setDateDebut(dateDebut);
-        reservation.setDateFin(dateFin);
+        reservation.setDateDebut(dateDebutStr);
+        reservation.setDateFin(dateFinStr);
         reservation.setPreferences(preferences);
 
         // Mettre à jour la disponibilité de la chambre
@@ -95,24 +95,24 @@ public class ReservationSoapService {
                 .orElseThrow(() -> new RuntimeException("Réservation non trouvée"));
 
         // Convertir les chaînes de caractères en objets Date
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateDebut;
-        Date dateFin;
-        try {
-            dateDebut = dateFormat.parse(dateDebutStr);
-            dateFin = dateFormat.parse(dateFinStr);
-        } catch (ParseException e) {
-            throw new RuntimeException("Format de date invalide, veuillez utiliser 'yyyy-MM-dd'", e);
-        }
-
-        // Validation des dates (optionnelle)
-        if (dateDebut.after(dateFin)) {
-            throw new RuntimeException("La date de début doit être antérieure à la date de fin");
-        }
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        Date dateDebut;
+//        Date dateFin;
+//        try {
+//            dateDebut = dateFormat.parse(dateDebutStr);
+//            dateFin = dateFormat.parse(dateFinStr);
+//        } catch (ParseException e) {
+//            throw new RuntimeException("Format de date invalide, veuillez utiliser 'yyyy-MM-dd'", e);
+//        }
+//
+//        // Validation des dates (optionnelle)
+//        if (dateDebut.after(dateFin)) {
+//            throw new RuntimeException("La date de début doit être antérieure à la date de fin");
+//        }
 
         // Mise à jour des propriétés de la réservation
-        reservation.setDateDebut(dateDebut);
-        reservation.setDateFin(dateFin);
+        reservation.setDateDebut(dateDebutStr);
+        reservation.setDateFin(dateFinStr);
         reservation.setPreferences(preferences);
 
         return reservationRepository.save(reservation);

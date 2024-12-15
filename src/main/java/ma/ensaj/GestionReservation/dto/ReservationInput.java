@@ -1,15 +1,20 @@
 package ma.ensaj.GestionReservation.dto;
 
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import ma.ensaj.GestionReservation.entities.Chambre;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReservationInput {
     private Long clientId;
-    private Long chambreId;
-    private Date dateDebut;
-    private Date dateFin;
+    private Chambre chambre;
+    private String dateDebut;
+    private String dateFin;
     private String preferences;
 
-    // Getters et Setters
     public Long getClientId() {
         return clientId;
     }
@@ -18,27 +23,27 @@ public class ReservationInput {
         this.clientId = clientId;
     }
 
-    public Long getChambreId() {
-        return chambreId;
+    public Chambre getChambre() {
+        return chambre;
     }
 
-    public void setChambreId(Long chambreId) {
-        this.chambreId = chambreId;
+    public void setChambre(Chambre chambre) {
+        this.chambre = chambre;
     }
 
-    public Date getDateDebut() {
+    public String getDateDebut() {
         return dateDebut;
     }
 
-    public void setDateDebut(Date dateDebut) {
+    public void setDateDebut(String dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public Date getDateFin() {
+    public String getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(Date dateFin) {
+    public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
 

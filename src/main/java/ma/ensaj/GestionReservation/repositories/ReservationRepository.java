@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
     List<Reservation> findByClient(Client client);
-    List<Reservation> findByDateDebutBetween(LocalDate start, LocalDate end);
+    List<Reservation> findByDateDebutBetween(String start, String end);
 }

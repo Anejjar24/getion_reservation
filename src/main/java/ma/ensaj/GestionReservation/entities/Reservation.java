@@ -34,9 +34,9 @@ public class Reservation {
     @JoinColumn(name = "chambre_id")
     private Chambre chambre;
     @Temporal(TemporalType.DATE)
-    private Date dateDebut;
+    private String dateDebut;
     @Temporal(TemporalType.DATE)
-    private Date dateFin;
+    private String dateFin;
     private String preferences;
 
     public Long getId() {
@@ -64,28 +64,26 @@ public class Reservation {
         this.chambre = chambre;
     }
 
-    public Date getDateDebut() {
+    public String getDateDebut() {
         return dateDebut;
     }
 
-    public void setDateDebut(Date dateDebut) {
+    public void setDateDebut(String dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public Date getDateFin() {
+    public String getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(Date dateFin) {
+    public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
 
     public String getPreferences() {
         return preferences;
     }
-    public Long getClientId() {
-        return client.getId();
-    }
+
     public void setPreferences(String preferences) {
         this.preferences = preferences;
     }
