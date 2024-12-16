@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+option java_package = "ma.ensaj.GestionReservation.stubs";
+option java_multiple_files = true;
+
+// Énumérations et messages existants
+enum TypeChambre {
+  SINGLE = 0;
+  TWIN = 1;
+  DOUBLE = 2;
+  FAMILY = 3;
+  DELUXE = 4;
+}
+
+message Client {
+  int64 id = 1;
+  string nom = 2;
+  string prenom = 3;
+  string email = 4;
+  string telephone = 5;
+}
+
+message Chambre {
+  int64 id = 1;
+  double prix = 2;
+  bool disponible = 3;
+  TypeChambre type = 4;
+}
+
+message Reservation {
+  int64 id = 1;
+  Client client = 2;
+  Chambre chambre = 3;
+  string dateDebut = 4;
+  string dateFin = 5;
+  string preferences = 6;
+}
+
+// Requêtes et réponses
+message CreateReservationRequest {
+  Client client = 1;
+  Chambre chambre = 2;
+  string dateDebut = 3;
+  string dateFin = 4;
+  string preferences = 5;
+}
+
+message UpdateReservationRequest {
+  int64 id = 1;
+  Client client = 2;
+  Chambre chambre = 3;
+  string dateDebut = 4;
+  string dateFin = 5;
+  string preferences = 6;
+}
+
+message GetReservationByIdRequest {
+  int64 id = 1;
+}
+
+message GetReservationsByClientRequest {
+  int64 clientId = 1;
+}
+
+message GetReservationsByDateRangeRequest {
+  string startDate = 1;
+  string endDate = 2;
+}
+
+message GetAllReservationsRequest {}
+
+message ReservationResponse {
+  Reservation reservation = 1;
+}
+
+message ReservationsResponse {
+  repeated Reservation reservations = 1;
+}
+
+service ReservationService {
+  rpc CreateReservation(CreateReservationRequest) returns (ReservationResponse);
+  rpc UpdateReservation(UpdateReservationRequest) returns (ReservationResponse);
+  rpc DeleteReservation(GetReservationByIdRequest) returns (ReservationResponse);
+  rpc GetReservationById(GetReservationByIdRequest) returns (ReservationResponse);
+  rpc GetReservationsByClient(GetReservationsByClientRequest) returns (ReservationsResponse);
+  rpc GetReservationsByDateRange(GetReservationsByDateRangeRequest) returns (ReservationsResponse);
+  rpc GetAllReservations(GetAllReservationsRequest) returns (ReservationsResponse);
+}
